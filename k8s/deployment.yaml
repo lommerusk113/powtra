@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: powtra-backend
+  labels:
+    app: powtra-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: powtra-backend
+  template:
+    metadata:
+      labels:
+        app: powtra-backend
+    spec:
+      containers:
+        - name: powtra-backend
+          image: powtra-backend
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "k8s"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: powtra-backend
+spec:
+  type: NodePort
+  selector:
+    app: powtra-backend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30080

@@ -1,0 +1,22 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+metadata:
+  name: powtra
+build:
+  artifacts:
+    - image: powtra-backend
+      context: .
+      docker:
+        dockerfile: services/powtra-backend/Dockerfile
+  local:
+    push: false
+manifests:
+  rawYaml:
+    - k8s/*.yaml
+deploy:
+  kubectl: {}
+portForward:
+  - resourceType: service
+    resourceName: powtra-backend
+    port: 8080
+    localPort: 8080
