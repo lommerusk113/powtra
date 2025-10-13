@@ -1,1 +1,3 @@
 rootProject.name = 'powtra'
+
+include 'services:powtra-backend'
