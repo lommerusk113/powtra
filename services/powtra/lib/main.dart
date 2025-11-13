@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:health/health.dart';
+import "pages/home_page.dart";
 
 void main() {
   runApp(const Powtra());
@@ -20,23 +20,6 @@ class Powtra extends StatelessWidget {
         ),
       ),
       home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Powtra')),
-      body: const Center(child: Text('Hello World 3')),
     );
   }
 }
